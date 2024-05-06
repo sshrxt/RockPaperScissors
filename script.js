@@ -1,56 +1,89 @@
-function getComputerChoice(){
-    let randomChoice = Math.floor(Math.random() * 3);
+let playerScore = 0;
+let compScore = 0;
 
-    switch(randomChoice){
-        case 0:
-            return "rock";
-        case 1:
-            return "scissors";
-        case 2:
-            return "paper";
-    }
+
+function getComputerChoice() {
+  let randomChoice = Math.floor(Math.random() * 3);
+
+  switch (randomChoice) {
+    case 0:
+      return "rock";
+    case 1:
+      return "scissors";
+    case 2:
+      return "paper";
+  }
 }
 
-function playRound(playersSelection, computerSelection){
-    playersSelection.toLowerCase();
-    if(playersSelection == "rock"){
-        switch(computerSelection){
-            case "rock":
-                return "tie";
-            case "paper":
-                return "You Lose! Paper beats Rock";
-            case "scissors":
-                return "You Win! Rock beats Scissors";
-        }
-    } else if(playersSelection == "paper"){
-        switch(computerSelection){
-            case "rock":
-                return "You Win! Paper beats Rock";
-            case "paper":
-                return "You Tie!";
-            case "scissors":
-                return "You Lose! Scissors beats Paper";
-        }
-    } else{
-        switch(computerSelection){
-            case "rock":
-                return "You Lose! Rock beats Scissors";
-            case "paper":
-                return "You Win! Scissors beats Paper";
-            case "scissors":
-                return "You Tie!";
-        }
-    }
+function playRound(playersSelection, computerSelection, scoreBoardDiv) {
+  playersSelection.toLowerCase();
+  
+  const scoreBoard = scoreBoardDiv.querySelector("h1");
+  const moves = scoreBoardDiv.querySelector("h5");
+
+  moves.textContent = playersSelection + " vs " + computerSelection; 
+
+  if(playerSelection == )
+
+
+  scoreBoard.textContent = playerScore + " : " + compScore;
 }
 
-function game(){
-    let computerChoice;
-    let userChoice;
-    for(let i = 0; i < 5; i++){
-        computerChoice = getComputerChoice();
-        userChoice = prompt();
-        console.log(playRound(userChoice, computerChoice));
-    }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".result");
+
+  const startButton = document.createElement("button");
+  startButton.textContent = "Start Game";
+  startButton.classList.add("start-button");
+
+  container.appendChild(startButton);
+
+  startButton.addEventListener("click", () => {
+    container.removeChild(startButton);
+
+    const playerIcon = document.createElement("img");
+    playerIcon.src = "player.png";
+    playerIcon.setAttribute("style", "width: 150px; height: auto;");
+    container.appendChild(playerIcon);
+
+    const scoreBoardDiv = document.createElement("div");
+    scoreBoardDiv.classList.add("score-board");
+
+    const scoreBoard = document.createElement("h1");
+    scoreBoard.textContent = 0 + " : " + 0;
+    scoreBoardDiv.appendChild(scoreBoard);
+
+    const move = document.createElement("h5");
+    move.textContent = "no moves selected";
+    scoreBoardDiv.appendChild(move);
+
+    container.appendChild(scoreBoardDiv);
+
+    const robotIcon = document.createElement("img");
+    robotIcon.src = "robot.png";
+    robotIcon.setAttribute("style", "width: 150px; height: auto;");
+    container.appendChild(robotIcon);
+    addEventListeners(scoreBoardDiv);
+  });
+});
+
+function addEventListeners(scoreBoardDiv) {
+    const rock = document.querySelector(".rock");
+    const paper = document.querySelector(".paper");
+    const scissors = document.querySelector(".scissors");
+
+    rock.addEventListener('click', () => {  
+        playRound("rock", getComputerChoice(), scoreBoardDiv);
+    });
+
+    paper.addEventListener('click', () => {
+        playRound("paper", getComputerChoice(), scoreBoardDiv);
+    });
+
+    scissors.addEventListener('click', () => {
+        playRound("scissors", getComputerChoice(), scoreBoardDiv);
+    });
 }
 
-game();
+
