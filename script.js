@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.removeChild(startButton);
 
     const playerIcon = document.createElement("img");
-    playerIcon.src = "player.png";
+    playerIcon.src = "./images/player.png";
     playerIcon.setAttribute("style", "width: 150px; height: auto;");
     container.appendChild(playerIcon);
 
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(scoreBoardDiv);
 
     const robotIcon = document.createElement("img");
-    robotIcon.src = "robot.png";
+    robotIcon.src = "./images/robot.png";
     robotIcon.setAttribute("style", "width: 150px; height: auto;");
     container.appendChild(robotIcon);
     addEventListeners(scoreBoardDiv);

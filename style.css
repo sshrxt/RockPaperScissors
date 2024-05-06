@@ -17,7 +17,7 @@ body {
     background-color: antiquewhite;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(background.png);
+    background-image: url(./images/background.png);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
