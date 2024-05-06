@@ -16,17 +16,51 @@ function getComputerChoice() {
 }
 
 function playRound(playersSelection, computerSelection, scoreBoardDiv) {
-  playersSelection.toLowerCase();
+    playersSelection = playersSelection.toLowerCase();
   
-  const scoreBoard = scoreBoardDiv.querySelector("h1");
-  const moves = scoreBoardDiv.querySelector("h5");
+    const scoreBoard = scoreBoardDiv.querySelector("h1");
+    const moves = scoreBoardDiv.querySelector("h5");
 
-  moves.textContent = playersSelection + " vs " + computerSelection; 
+    moves.textContent = playersSelection + " vs " + computerSelection; 
 
-  if(playerSelection == )
+    const res = playOnce(playersSelection, computerSelection);
+    if(res == 1) {
+        playerScore++; // Increment playerScore
+    }
+    else if(res == 0) {
+        compScore++; // Increment compScore
+    }
 
+    scoreBoard.textContent = playerScore + " : " + compScore;
 
-  scoreBoard.textContent = playerScore + " : " + compScore;
+    if(playerScore == 5) {
+        alert("THE PLAYER FUCKING WINS");
+        reset();
+    }
+    else if (compScore == 5){
+        alert("The computer won bruh");
+        reset();
+    }
+}
+
+function reset() {
+    playerScore = 0;
+    compScore = 0;
+
+    location.reload();
+}
+
+function playOnce(playersSelection, computerSelection) {
+    if(playersSelection === computerSelection) {
+        return 2; // It's a tie
+    }
+    else if ((playersSelection === "rock" && computerSelection === "scissors") ||
+             (playersSelection === "paper" && computerSelection === "rock") ||
+             (playersSelection === "scissors" && computerSelection === "paper")) {
+        return 1; // Player wins
+    } else {
+        return 0; // Computer wins
+    }
 }
 
 
@@ -85,5 +119,7 @@ function addEventListeners(scoreBoardDiv) {
         playRound("scissors", getComputerChoice(), scoreBoardDiv);
     });
 }
+
+
 
 
