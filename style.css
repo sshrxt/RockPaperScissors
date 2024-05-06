@@ -5,15 +5,19 @@
 
 
 body { 
-    background-color: rgb(91, 48, 247);
+    background-color: rgb(120, 120, 248);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 
 .container{
     background-color: antiquewhite;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(background.png);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -56,7 +60,7 @@ body {
 }
 
 .start-button {
-    background-color: blue;
+    background-color: rgb(82, 82, 209);
     color: white;
     padding: 30px 60px;
     border: none;
